@@ -3,6 +3,7 @@
 <head>
   <title>Carl is running two marathons for Macmillan</title>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans:400,700" rel="stylesheet">
   <style>
     * {
@@ -25,9 +26,8 @@
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      max-width: 20em;
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
 
     h2 {
@@ -41,7 +41,6 @@
     }
 
     p {
-      max-width: 35rem;
       margin-bottom: 1rem;
     }
 
@@ -52,27 +51,24 @@
       border: none;
     }
 
-    .content {
-      max-width: 40em;
-      padding-right: 5%;
+    #container {
+      max-width: 1024px;
     }
 
-    .metrics {
-      width: 230px;
-      height: 740px;
-      overflow: hidden;
+    .content {
+      padding-right: 5%;
     }
 
     .donate {
       display: inline-block;
       padding: 1rem 2rem;
-      margin-top: 2rem;
+      margin-top: 1rem;
       font-size: 2rem;
       text-align: center;
       background-color: #111;
       color: white;
       border-radius: 4px;
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
       text-decoration: none;
       outline: none;
 
@@ -94,7 +90,19 @@
     }
 
     .images {
-      padding-right: 2rem;
+      padding-right: 1rem;
+      flex: 1;
+    }
+
+    .metrics {
+      flex: 1;
+      padding-right: 1rem;
+    }
+
+    .metrics-wrapper {
+      width: 230px;
+      height: 740px;
+      overflow: hidden;
     }
 
     .image-list {
@@ -105,9 +113,17 @@
       display: none;
     }
 
-    @media (min-width: 800px) {
+    .mobile-donate-button {
+      display: block;
+    }
+
+    @media only screen and (min-width: 800px) {
       main {
         display: flex;
+      }
+
+      h1 {
+        font-size: 3rem;
       }
 
       .content {
@@ -117,6 +133,14 @@
       .extra-donate-button {
         display: block;
       }
+
+      .metrics {
+        padding-right: 0;
+      }
+
+      .mobile-donate-button {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -124,6 +148,9 @@
 <body>
   <div id="container">
   <h1>I'm running the Brighton and London Marathons for Macmillan Cancer Support</h1>
+
+  <p class="mobile-donate-button"><a href="https://www.justgiving.com/hubris/donate" class="donate">Donate 💰</a></p>
+
   <main>
     <div class="content">
       <section>
@@ -163,11 +190,13 @@
       <a href="https://www.justgiving.com/hubris/donate" class="donate">Donate 💰</a>
       <div class="integrations">
         <div class="images">
-          <h3>Training selfies</h3>
+          <h3>Wall of misery</h3>
           <ul class="image-list"></ul>
         </div>
         <div class="metrics">
-          <iframe src="https://relativeprecision.geckoboard.com/dashboards/65A2218929D7F34A" scrolling="no"></iframe>
+          <div class="metrics-wrapper">
+            <iframe src="https://relativeprecision.geckoboard.com/dashboards/65A2218929D7F34A" scrolling="no"></iframe>
+          </div>
         </div>
       </div>
     </aside>
