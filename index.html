@@ -52,12 +52,7 @@
       border: none;
     }
 
-    main {
-      display: flex;
-    }
-
     .content {
-      flex: 1;
       max-width: 40em;
       padding-right: 5%;
     }
@@ -71,14 +66,17 @@
     .donate {
       display: inline-block;
       padding: 1rem 2rem;
-      font-size: 4rem;
+      margin-top: 2rem;
+      font-size: 2rem;
       text-align: center;
       background-color: #111;
       color: white;
       border-radius: 4px;
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
       text-decoration: none;
       outline: none;
+
+      box-shadow: 0 0 50px gold;
     }
 
     .donate:active, .donate:hover {
@@ -96,8 +94,25 @@
     }
 
     .images {
-      list-style: none;
       padding-right: 2rem;
+    }
+
+    .image-list {
+      list-style: none;
+    }
+
+    .extra-donate-button {
+      display: none;
+    }
+
+    @media (min-width: 800px) {
+      main {
+        display: flex;
+      }
+
+      .content {
+        flex: 1;
+      }
     }
   </style>
 </head>
@@ -137,14 +152,16 @@
         <p><strong class="goal">£2500</strong> — If we can raise this then I will run both races while wearing a pair of <a href="http://www.necomimi.com/">Necomimi Cat Ears</a> and look hilariously miserable while doing so.</p>
         <p>I'll think of more stretch goals should we need them.</p>
 
-        <a href="https://www.justgiving.com/hubris" class="donate">Donate</a>
+        <p class="extra-donate-button"><a href="https://www.justgiving.com/hubris/donate" class="donate">Donate 💰</a></p>
       </section>
     </div>
     <aside class="side-bar">
-      <a href="https://www.justgiving.com/hubris" class="donate">Donate</a>
+      <a href="https://www.justgiving.com/hubris/donate" class="donate">Donate 💰</a>
       <div class="integrations">
-        <ul class="images">
-        </ul>
+        <div class="images">
+          <h3>Training selfies</h3>
+          <ul class="image-list"></ul>
+        </div>
         <div class="metrics">
           <iframe src="https://relativeprecision.geckoboard.com/dashboards/65A2218929D7F34A" scrolling="no"></iframe>
         </div>
@@ -160,7 +177,7 @@
         var html = payload.images.slice(0, 8).map(function (image) {
           return '<li class="image"><img src="' + image + '" /></li>';
         });
-        document.querySelector('.images').innerHTML = html.join('');
+        document.querySelector('.image-list').innerHTML = html.join('');
       });
     })();
     </script>
