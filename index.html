@@ -83,6 +83,19 @@
       transition: .1s transform;
       transform: translate(1px, 1px);
     }
+
+    .integrations {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .goal {
+      font-size: 2rem;
+    }
+
+    .images {
+      list-style: none;
+    }
   </style>
 </head>
 
@@ -115,8 +128,8 @@
 
         <h3>Fund raising targets and stretch goals.</h3>
 
-        <p><strong>£2000</strong> — I'm hoping we can at least raise this.</p>
-        <p><strong>£2500</strong> — If we can raise this then I will run both races while wearing a pair of Necomimi Cat Ears (http://www.necomimi.com/) and look hilariously miserable while doing so.</p>
+        <p><strong class="goal">£2000</strong> — I'm hoping we can at least raise this.</p>
+        <p><strong class="goal">£2500</strong> — If we can raise this then I will run both races while wearing a pair of <a href="http://www.necomimi.com/">Necomimi Cat Ears</a> and look hilariously miserable while doing so.</p>
         <p>I'll think of more stretch goals should we need them.</p>
 
         <a href="https://www.justgiving.com/hubris" class="donate">Donate</a>
@@ -124,10 +137,28 @@
     </div>
     <aside class="side-bar">
       <a href="https://www.justgiving.com/hubris" class="donate">Donate</a>
-      <div class="metrics">
-        <iframe src="https://relativeprecision.geckoboard.com/dashboards/65A2218929D7F34A" scrolling="no"></iframe>
+      <div class="integrations">
+        <ul class="images">
+        </ul>
+        <div class="metrics">
+          <iframe src="https://relativeprecision.geckoboard.com/dashboards/65A2218929D7F34A" scrolling="no"></iframe>
+        </div>
       </div>
     </aside>
+    <script>
+    (function () {
+      if (!window.fetch || !window.Promise) return;
+
+      fetch('https://s3-eu-west-1.amazonaws.com/vogon/strava.json')
+      .then(function (res) { return res.json(); })
+      .then(function (payload) {
+        var html = payload.images.slice(0, 8).map(function (image) {
+          return '<li class="image"><img src="' + image + '" /></li>';
+        });
+        document.querySelector('.images').innerHTML = html.join('');
+      });
+    })();
+    </script>
   </main>
 </body>
 </html>
